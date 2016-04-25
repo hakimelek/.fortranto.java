@@ -1,0 +1,76 @@
+		PROGRAM PPLProject
+		INTEGER I, J, K, L, M, N
+
+		WRITE(*,*) "ADDITION"
+		DO I = 1, 25
+			DO N = 1, 4
+				J = (RAND(0)*9)+1
+				K = (RAND(0)*9)+1
+				WRITE(*,10) J, '+', K, '='
+	10			FORMAT(8X, I2, 1X, A1, 1X, I1, 1X, A1)
+			END DO
+
+		END DO	
+			
+		WRITE(*,*) ""
+	
+		WRITE(*,*) "SUBTRACTION"
+		DO I = 1, 25
+			DO N = 1, 4
+				J = (RAND(0)*26)+5
+				K = (RAND(0)*8)+2
+				IF (J .GT. K) THEN
+					WRITE(*,20) J, '-', K, '='
+	20				FORMAT(8X, I2, 1X, A1, 1X, I1, 1X, A1)
+				ELSE
+					WRITE(*,30) K, '-', J, '='
+	30				FORMAT(8X, I2, 1X, A1, 1X, I1, 1X, A1)
+				END IF
+			END DO
+
+		END DO
+		
+		WRITE(*,*) ""
+		
+		WRITE(*,*) "MULTIPLICATION"
+		DO I = 1, 25
+			DO N = 1, 4
+				J = (RAND(0)*9)+1
+				K = (RAND(0)*9)+1
+				WRITE(*,40) J, '*', K, '='
+	40			FORMAT(8X, I2, 1X, A1, 1X, I1, 1X, A1)
+			END DO
+
+		END DO
+		
+		WRITE(*,*) ""
+		
+		WRITE(*,*) "DIVISION"
+		DO I = 1, 25
+			DO N = 1, 4
+				J = (RAND(0)*26)+5
+				K = (RAND(0)*8)+2
+				IF (J .GT. K) THEN
+					M = MOD(J,K)
+					IF (M .EQ. 0) THEN
+						WRITE(*,50) J, '/', K, '='
+	50					FORMAT(8X, I2, 1X, A1, 1X, I1, 1X, A1)
+					ELSE
+						J = J - M
+						WRITE(*,60) J, '/', K, '='
+	60					FORMAT(8X, I2, 1X, A1, 1X, I1, 1X, A1)	
+					ENDIF
+				ELSE
+					M = MOD(K,J)
+					IF (M .EQ. 0) THEN
+						WRITE(*,70) K, '/', J, '='
+	70					FORMAT(8X, I2, 1X, A1, 1X, I1, 1X, A1)
+					ELSE
+						K = K - M
+						WRITE(*,80) K, '/', J, '='
+	80					FORMAT(8X, I2, 1X, A1, 1X, I1, 1X, A1)
+					ENDIF
+				ENDIF
+			END DO
+		END DO
+		STOP
